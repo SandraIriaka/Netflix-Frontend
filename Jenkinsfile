@@ -19,13 +19,13 @@ pipeline {
 
         stage("Git Checkout") {
             steps {
-                git branch: 'main', url: 'https://github.com/harishnshetty/amazon-Devsecops.git'
+                git branch: 'main', url: 'https://github.com/SandraIriaka/Netflix-Frontend.git'
             }
         }
 
         stage("SonarQube Analysis") {
             steps {
-                withSonarQubeEnv('sonar-server') {
+                withSonarQubeEnv('sonar-scanner') {
                     sh ''' $SCANNER_HOME/bin/sonar-scanner \
                         -Dsonar.projectName=netflix-frontend \
                         -Dsonar.projectKey=netflix-frontend '''
@@ -38,7 +38,7 @@ pipeline {
                 script {
                     timeout(time: 3, unit: 'MINUTES') {
                   
-                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
+                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-scanner'
                 }
             }
         }
