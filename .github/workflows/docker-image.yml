@@ -30,7 +30,7 @@ jobs:
       with:
        projectBaseDir: app/src
        args: >
-        -Dsonar.organization=CloudTeam # For SonarQube Cloud only
+        -Dsonar.organization=CloudTeam 
         "-Dsonar.projectName=My netflix-frontend"
         -Dsonar.projectKey=cloudteam75621
         -Dsonar.python.coverage.reportPaths=coverage.xml
